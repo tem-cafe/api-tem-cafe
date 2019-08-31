@@ -1,0 +1,25 @@
+{
+  "name": "api-tem-cafe",
+  "version": "1.0.0",
+  "description": "API do projeto de tem café.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tem-cafe/api-tem-cafe.git"
+  },
+  "keywords": [
+    "cafe",
+    "fatec",
+    "nodejs",
+    "bigdata"
+  ],
+  "author": "Fernando Silva Maransatto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tem-cafe/api-tem-cafe/issues"
+  },
+  "homepage": "https://github.com/tem-cafe/api-tem-cafe#readme"
+}
