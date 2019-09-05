@@ -22,7 +22,6 @@ exports.postUser = (req, res, next) => {
       return res.status(500).send({ err: "Usuario já existe" });
     }
     bcrypt.hash(req.body.password, 10, (errBcrypt, hash) => {
-      console.log(errBcrypt, hash);
       if (errBcrypt) {
         return res.status(500).send({ bCryptError: errBcrypt });
       }
