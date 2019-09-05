@@ -11,7 +11,7 @@ app.use(cors());
 
 app.use(morgan('dev'));
 
-app.use('/tem-cafe', coffeRoute);
+app.use('/cafe', coffeRoute);
 app.use('/usuario', userRoute);
 
 app.use((req, res, next) => {
