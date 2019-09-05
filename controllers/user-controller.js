@@ -60,3 +60,22 @@ exports.deleteUser = (req, res, next) => {
     });
   });
 };
+
+exports.loginUser = (req, res, next) => {
+  ModelUser.findOne({ email: req.body.email }, (err, result) => {
+    if (!result) {
+      return res.status(500).send({ error: "Usuario não existe!" });
+    }
+    bcrypt.compare(req.body.password, result.password, (errBcrypt, same) => {
+      if(same) {
+        return res.status(200).send({
+          message: "Sucesso",
+          token: "token"
+        })
+      }
+      if (errBcrypt) {
+        return res.status(500).send({ errBcrypt: errBcrypt });
+      }
+    });
+  });
+};
