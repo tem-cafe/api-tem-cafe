@@ -64,7 +64,7 @@ exports.deleteUser = (req, res, next) => {
 exports.loginUser = (req, res, next) => {
   ModelUser.findOne({ email: req.body.email }, (err, result) => {
     if (!result) {
-      return res.status(500).send({ error: "Usuario não existe!" });
+      return res.status(401).send({ error: "Usuario ou senha incorreta!" });
     }
     bcrypt.compare(req.body.password, result.password, (errBcrypt, same) => {
       if(same) {
@@ -73,9 +73,7 @@ exports.loginUser = (req, res, next) => {
           token: "token"
         })
       }
-      if (errBcrypt) {
-        return res.status(500).send({ errBcrypt: errBcrypt });
-      }
+      return res.status(401).send({ error: "Usuario ou senha incorreta!" });
     });
   });
 };
