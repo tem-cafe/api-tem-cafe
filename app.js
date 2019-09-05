@@ -3,9 +3,9 @@ const app = express();
 const morgan = require('morgan');
 const cors = require("cors");
 const mongoose = require("mongoose")
-const routeCoffee = require("./routes/coffee-route");
-const routeUser = require("./routes/user-route");
-const routeLogin = require("./routes/login-router");
+const coffeeRoute = require("./routes/coffee-route");
+const userRoute = require("./routes/user-route");
+const loginRoute = require("./routes/login-router");
 
 const db = 'mongodb+srv://tem-cafe:temcafe123@tem-cafe-5fgjs.mongodb.net/test?retryWrites=true&w=majority'
 
@@ -18,11 +18,11 @@ app.use(cors());
 
 app.use(morgan('dev'));
 
-app.use('/tem-cafe', routeCoffee);
+app.use('/tem-cafe', coffeeRoute);
 
-app.use('/usuario', routeUser);
+app.use('/usuario', userRoute);
 
-app.use('/login', routeLogin);
+app.use('/login', loginRoute);
 
 app.use((req, res, next) => {
   const error = new Error("Route Not found");
