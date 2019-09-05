@@ -22,7 +22,6 @@ exports.postUser = (req, res, next) => {
       return res.status(500).send({ err: "Usuario já existe" });
     }
     bcrypt.hash(req.body.password, 10, (errBcrypt, hash) => {
-      console.log(errBcrypt, hash);
       if (errBcrypt) {
         return res.status(500).send({ bCryptError: errBcrypt });
       }
@@ -57,23 +56,6 @@ exports.deleteUser = (req, res, next) => {
         }
         return res.status(201).send({ message: "Sucesso" });
       });
-    });
-  });
-};
-
-exports.loginUser = (req, res, next) => {
-  ModelUser.findOne({ email: req.body.email }, (err, result) => {
-    if (!result) {
-      return res.status(401).send({ error: "Usuario ou senha incorreta!" });
-    }
-    bcrypt.compare(req.body.password, result.password, (errBcrypt, same) => {
-      if(same) {
-        return res.status(200).send({
-          message: "Sucesso",
-          token: "token"
-        })
-      }
-      return res.status(401).send({ error: "Usuario ou senha incorreta!" });
     });
   });
 };
