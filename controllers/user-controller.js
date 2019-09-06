@@ -32,7 +32,7 @@ exports.postUser = (req, res, next) => {
       user
         .save()
         .then(result => {
-          return res.status(201).send({ response: result });
+          return res.status(201).send({ result: result });
         })
         .catch(err => {
           return res.status(500).send({ err: err });
