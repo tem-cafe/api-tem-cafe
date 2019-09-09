@@ -1,11 +1,12 @@
 const mongoose = require("mongoose");
 
 const coffeeSchema = {
-  user: String,
-  "tem-cafe": Boolean,
-  "tem-copo": Boolean,
-  "tem-po": Boolean,
-  "tem-acucar": Boolean,
+  email: String,
+  fizCafe: Boolean,
+  temCafe: Boolean,
+  temCopo: Boolean,
+  temPo: Boolean,
+  temAcucar: Boolean,
   date: { type: Date, default: Date.now }
 };
 
