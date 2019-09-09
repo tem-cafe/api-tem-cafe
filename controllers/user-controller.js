@@ -10,7 +10,7 @@ exports.getUsers = (req, res, next) => {
       });
     })
     .catch(err => {
-      res.status(400).send({
+      res.status(500).send({
         error: err
       });
     });
