@@ -41,7 +41,7 @@ exports.postCoffee = (req, res, next) => {
         .then(result => {
             var temCafe = req.body.temCafe;
             if (req.body.fizCafe) {
-                temCafe = true;
+                temCafe = true; 
             }
             const hasCoffee = new ModelCoffee({
                 email: req.body.email,
