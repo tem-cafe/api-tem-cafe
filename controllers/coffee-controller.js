@@ -6,29 +6,25 @@ exports.getCoffee = (req, res, next) => {
         .then(temCafe => {
             if (!temCafe[0].temCafe) {
                 return res.status(200).send({
-                    result: {
                         temCafe: temCafe[0].temCafe,
                         temPo: temCafe[0].temPo,
                         temCopo: temCafe[0].temCopo,
                         temAcucar: temCafe[0].temAcucar,
-                    }
                 })
             }
             ModelCoffee.find({ fizCafe: true }).sort({ date: -1 }).limit(1)
                 .exec()
                 .then(fizCafe => {
                     return res.status(200).send({
-                        result: {
                             temCafe: temCafe[0].temCafe,
                             temCopo: temCafe[0].temCopo,
                             temAcucar: temCafe[0].temAcucar,
                             temPo: temCafe[0].temPo,
                             date: fizCafe[0].date
-                        }
                     });
                 })
                 .catch(err => {
-                    return res.status(500).send({
+                    return res.status(400).send({
                         error: err
                     });
                 });
@@ -53,7 +49,7 @@ exports.postCoffee = (req, res, next) => {
             });
             hasCoffee.save()
                 .then(result => {
-                    return res.status(200).send({ result: result });
+                    return res.status(200).send(result);
                 })
                 .catch(error => {
                     return res.status(500).send({ error: error })
