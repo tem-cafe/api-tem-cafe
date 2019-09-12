@@ -9,6 +9,8 @@ exports.loginUser = (req, res, next) => {
         bcrypt.compare(req.body.password, result.password, (errBcrypt, same) => {
             if (same) {
                 return res.status(200).send({
+                    name: result.name,
+                    email: result.email,
                     message: "Sucesso",
                     token: "token"
                 })

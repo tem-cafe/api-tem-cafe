@@ -6,21 +6,22 @@ exports.getCoffee = (req, res, next) => {
         .then(temCafe => {
             if (!temCafe[0].temCafe) {
                 return res.status(200).send({
-                        temCafe: temCafe[0].temCafe,
-                        temPo: temCafe[0].temPo,
-                        temCopo: temCafe[0].temCopo,
-                        temAcucar: temCafe[0].temAcucar,
+                    temCafe: temCafe[0].temCafe,
+                    temPo: temCafe[0].temPo,
+                    temCopo: temCafe[0].temCopo,
+                    temAcucar: temCafe[0].temAcucar,
                 })
             }
             ModelCoffee.find({ fizCafe: true }).sort({ date: -1 }).limit(1)
                 .exec()
                 .then(fizCafe => {
                     return res.status(200).send({
-                            temCafe: temCafe[0].temCafe,
-                            temCopo: temCafe[0].temCopo,
-                            temAcucar: temCafe[0].temAcucar,
-                            temPo: temCafe[0].temPo,
-                            date: fizCafe[0].date
+                        name: temCafe[0].name,
+                        temCafe: temCafe[0].temCafe,
+                        temCopo: temCafe[0].temCopo,
+                        temAcucar: temCafe[0].temAcucar,
+                        temPo: temCafe[0].temPo,
+                        date: fizCafe[0].date
                     });
                 })
                 .catch(err => {
@@ -40,6 +41,7 @@ exports.postCoffee = (req, res, next) => {
                 temCafe = true;
             }
             const hasCoffee = new ModelCoffee({
+                name: req.body.name,
                 email: req.body.email,
                 fizCafe: (req.body.fizCafe != null ? req.body.fizCafe : false),
                 temCafe: (temCafe != null ? temCafe : result[0].temCafe),

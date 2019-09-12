@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const coffeeSchema = {
+  name: String,
   email: String,
   fizCafe: Boolean,
   temCafe: Boolean,

@@ -26,13 +26,18 @@ exports.postUser = (req, res, next) => {
         return res.status(500).send({ bCryptError: errBcrypt });
       }
       const user = new ModelUser({
+        name: req.body.name,
         email: req.body.email,
         password: hash
       });
       user
         .save()
         .then(result => {
-          return res.status(201).send({ result: result });
+          return res.status(201).send({
+            name: result.name,
+            email: result.email,
+            token: "token"
+          });
         })
         .catch(err => {
           return res.status(500).send({ err: err });
