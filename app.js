@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const coffeeRoute = require("./routes/coffee-route");
 const userRoute = require("./routes/user-route");
 const loginRoute = require("./routes/login-route");
+const attRoute = require("./routes/atualizacao-route");
 
 const db = 'mongodb+srv://tem-cafe:temcafe123@tem-cafe-5fgjs.mongodb.net/test?retryWrites=true&w=majority'
 
@@ -23,6 +24,8 @@ app.use('/tem-cafe', coffeeRoute);
 app.use('/usuario', userRoute);
 
 app.use('/login', loginRoute);
+
+app.use('/verificarAtt', attRoute);
 
 app.use((req, res, next) => {
   const error = new Error("Route Not found");
